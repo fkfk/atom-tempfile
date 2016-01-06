@@ -1,0 +1,26 @@
+{
+  "name": "tempfile",
+  "main": "./lib/tempfile",
+  "version": "0.0.0",
+  "description": "Create temporary file. similar to 'open-junk-file.el'.",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": [
+      "tempfile:create",
+      "tempfile:paste"
+    ]
+  },
+  "repository": "https://github.com/fkfk/atom-tempfile",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.0",
+    "atom-config-plus": "^0.1.1",
+    "fs-plus": "^2.8.1",
+    "moment": "^2.11.0",
+    "tmp": "^0.0.28"
+  }
+}
