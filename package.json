@@ -1,10 +1,9 @@
 {
   "name": "tempfile",
   "main": "./lib/tempfile",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Create temporary file. similar to 'open-junk-file.el'.",
-  "keywords": [
-  ],
+  "keywords": [],
   "activationCommands": {
     "atom-workspace": [
       "tempfile:create",
