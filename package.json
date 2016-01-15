@@ -1,7 +1,7 @@
 {
   "name": "tempfile",
   "main": "./lib/tempfile",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create temporary file. similar to 'open-junk-file.el'.",
   "keywords": [],
   "activationCommands": {
