@@ -44,7 +44,7 @@ module.exports = Tempfile =
     'source\\\.strings': 'strings'
     'source\\\.perl6': 'p6'
     'source\\\.perl': 'pl'
-    'text\\\.html.php': 'php'
+    'text\\\.html\\\.php': 'php'
     'source\\\.plist': 'plist'
     'text\\\.xml\\\.plist': 'plist'
     'text\\\.python\\\.console': 'pycon'
