@@ -27,5 +27,5 @@ To do this, add the settings to the `~/.atom/config.cson` in the format below.
 
 ```coffeescript
 'tempfile-extra':
-  'source\\\.perl': 'pl6'
+  'source.perl': 'pl6'
 ```
