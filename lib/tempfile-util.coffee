@@ -1,4 +1,3 @@
-config = require './config'
 fs = require 'fs-plus'
 moment = require 'moment'
 path = require 'path'
@@ -67,11 +66,11 @@ module.exports = TempfileUtil =
     'text.md': 'md'
 
   tempPath: (grammar = null) ->
-    if config.get "save"
-      tempPath = path.join config.get("directory"), moment().format("YYYYMMDDHHmmss")
+    if atom.config.get "tempfile.save"
+      tempPath = path.join atom.config.get("tempfile.directory"), moment().format("YYYYMMDDHHmmss")
     else
       tempPath = tmp.tmpNameSync()
-    if config.get "addExtension"
+    if atom.config.get "tempfile.addExtension"
       ext = @getExtension grammar
       tempPath = "#{tempPath}.#{ext}" if ext
     fs.normalize tempPath

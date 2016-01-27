@@ -10,6 +10,25 @@
       "tempfile:paste"
     ]
   },
+  "configSchema": {
+    "save": {
+      "order": 1,
+      "type": "boolean",
+      "default": false,
+      "description": "Save tempfile"
+    },
+    "directory": {
+      "order": 2,
+      "type": "string",
+      "description": "Tempfile save directory(if save option enabled)"
+    },
+    "addExtension": {
+      "order": 3,
+      "type": "boolean",
+      "default": true,
+      "description": "Add file extension"
+    }
+  },
   "repository": "https://github.com/fkfk/atom-tempfile",
   "license": "MIT",
   "engines": {
@@ -17,7 +36,6 @@
   },
   "dependencies": {
     "atom-space-pen-views": "^2.0.0",
-    "atom-config-plus": "^0.1.1",
     "fs-plus": "^2.8.1",
     "moment": "^2.11.0",
     "tmp": "^0.0.28",

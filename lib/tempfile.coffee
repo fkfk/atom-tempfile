@@ -1,6 +1,5 @@
 TempfileView = require './tempfile-view'
 util = require './tempfile-util'
-config = require './config'
 {CompositeDisposable} = require 'atom'
 
 tmp = require 'tmp'
@@ -9,9 +8,10 @@ module.exports = Tempfile =
   tempfileView: null
   subscriptions: null
 
-  config: config.config
-
   activate: (state) ->
+    # set default value
+    atom.config.setDefaults "tempfile.directory", path.join(atom.config.get('core.projectHome'), "tempfiles")
+
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
