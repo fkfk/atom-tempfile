@@ -1,7 +1,7 @@
 {
   "name": "tempfile",
   "main": "./lib/tempfile",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Create temporary file. similar to 'open-junk-file.el'.",
   "keywords": [],
   "activationCommands": {
@@ -38,7 +38,13 @@
       "order": 5,
       "type": "string",
       "default": "current",
-      "enum": ["current", "left", "right", "top", "bottom"],
+      "enum": [
+        "current",
+        "left",
+        "right",
+        "top",
+        "bottom"
+      ],
       "description": "Specify a pane location to open a new tempfile buffer"
     }
   },
