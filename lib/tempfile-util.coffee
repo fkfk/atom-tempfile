@@ -83,5 +83,6 @@ module.exports = TempfileUtil =
   open: (grammar, selection = null) ->
     atom.workspace.open(@tempPath(grammar)).then (editor) ->
       editor.setGrammar grammar
-      if selection
-        editor.insertText selection.getText() unless selection.isEmpty()
+      if selection and not selection.isEmpty()
+        editor.insertText selection.getText(),
+          autoIndent: atom.config.get 'tempfile.autoIndent'
