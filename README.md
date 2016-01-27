@@ -18,7 +18,7 @@ Similar to '[open-junk-file.el](http://www.emacswiki.org/emacs/open-junk-file.el
 ### Create temporary file and paste selected text
 
 - Invoke `tempfile:paste`.
-- Chose "Paste to tempfile" from context menu.
+- Choose "Paste to tempfile" from context menu.
 
 ## Configuring extension
 
