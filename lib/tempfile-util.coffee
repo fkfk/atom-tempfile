@@ -81,6 +81,14 @@ module.exports = TempfileUtil =
     extensions[grammar.scopeName]
 
   open: (grammar, selection = null) ->
+    if atom.config.get("tempfile.splitPane") isnt "current"
+      activePane = atom.workspace.getActivePane()
+      pane = switch atom.config.get("tempfile.splitPane")
+        when "left"   then activePane.splitLeft()
+        when "right"  then activePane.splitRight()
+        when "top"    then activePane.splitUp()
+        when "bottom" then activePane.splitDown()
+      pane.focus()
     atom.workspace.open(@tempPath(grammar)).then (editor) ->
       editor.setGrammar grammar
       if selection and not selection.isEmpty()

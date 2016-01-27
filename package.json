@@ -33,6 +33,13 @@
       "type": "boolean",
       "default": false,
       "description": "Auto indent pasted text"
+    },
+    "splitPane": {
+      "order": 5,
+      "type": "string",
+      "default": "current",
+      "enum": ["current", "left", "right", "top", "bottom"],
+      "description": "Specify a pane location to open a new tempfile buffer"
     }
   },
   "repository": "https://github.com/fkfk/atom-tempfile",
