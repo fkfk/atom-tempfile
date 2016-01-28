@@ -23,12 +23,13 @@ module.exports = TempfileUtil =
     extensions[grammar.scopeName]
 
   open: (grammar, options) ->
-    if atom.config.get("tempfile.splitPane") isnt "current"
+    location = options.location || atom.config.get "tempfile.splitPane"
+    if location isnt "current"
       activePane = atom.workspace.getActivePane()
       if atom.config.get "tempfile.useExistPane"
-        pane = @findOrCreatePane activePane
+        pane = @findOrCreatePane activePane, location
       else
-        pane = @createNewPane activePane
+        pane = @createNewPane activePane, location
       pane.focus()
     atom.workspace.open(@tempPath(grammar)).then (editor) ->
       editor.setGrammar grammar

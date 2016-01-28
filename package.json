@@ -7,7 +7,17 @@
   "activationCommands": {
     "atom-workspace": [
       "tempfile:create",
-      "tempfile:paste"
+      "tempfile:create-top",
+      "tempfile:create-bottom",
+      "tempfile:create-left",
+      "tempfile:create-right",
+      "tempfile:create-current",
+      "tempfile:paste",
+      "tempfile:paste-top",
+      "tempfile:paste-bottom",
+      "tempfile:paste-left",
+      "tempfile:paste-right",
+      "tempfile:paste-current"
     ]
   },
   "configSchema": {

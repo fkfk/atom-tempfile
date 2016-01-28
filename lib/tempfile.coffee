@@ -16,8 +16,18 @@ module.exports = Tempfile =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:create': => @create()
-    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:paste': => @paste()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:create':         => @create()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:create-top':     => @create('top')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:create-bottom':  => @create('bottom')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:create-left':    => @create('left')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:create-right':   => @create('right')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:create-current': => @create('current')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:paste':          => @paste()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:paste-top':      => @paste('top')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:paste-bottom':   => @paste('bottom')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:paste-left':     => @paste('left')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:paste-right':    => @paste('right')
+    @subscriptions.add atom.commands.add 'atom-workspace', 'tempfile:paste-current':  => @paste('current')
 
   deactivate: ->
     @subscriptions.dispose()
@@ -26,14 +36,17 @@ module.exports = Tempfile =
   serialize: ->
     tempfileViewState: @tempfileView?.serialize()
 
-  create: ->
+  create: (location = null) ->
     unless @tempfileView?
       @tempfileView = new TempfileView()
+    if location
+      @tempfileView.temporaryOpenOptions.location = location
     @tempfileView.toggle()
 
-  paste: ->
+  paste: (location = null)->
     currentEditor = atom.workspace.getActiveTextEditor()
     grammar = currentEditor.getGrammar()
     options =
       selection: currentEditor.getLastSelection()
+      location: location
     util.open grammar, options

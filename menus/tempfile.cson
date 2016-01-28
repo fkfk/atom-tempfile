@@ -20,6 +20,51 @@
           'label': 'Paste'
           'command': 'tempfile:paste'
         }
+        {
+          'label': 'Extends'
+          'submenu': [
+            {
+              'label': 'Create to top pane'
+              'command': 'tempfile:create-top'
+            }
+            {
+              'label': 'Create to bottom pane'
+              'command': 'tempfile:create-bottom'
+            }
+            {
+              'label': 'Create to left pane'
+              'command': 'tempfile:create-left'
+            }
+            {
+              'label': 'Create to right pane'
+              'command': 'tempfile:create-right'
+            }
+            {
+              'label': 'Create to current pane'
+              'command': 'tempfile:create-current'
+            }
+            {
+              'label': 'Paste to top pane'
+              'command': 'tempfile:paste-top'
+            }
+            {
+              'label': 'Paste to bottom pane'
+              'command': 'tempfile:paste-bottom'
+            }
+            {
+              'label': 'Paste to left pane'
+              'command': 'tempfile:paste-left'
+            }
+            {
+              'label': 'Paste to right pane'
+              'command': 'tempfile:paste-right'
+            }
+            {
+              'label': 'Paste to current pane'
+              'command': 'tempfile:paste-current'
+            }
+          ]
+        }
       ]
     ]
   }
