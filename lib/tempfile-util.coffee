@@ -83,14 +83,40 @@ module.exports = TempfileUtil =
   open: (grammar, selection = null) ->
     if atom.config.get("tempfile.splitPane") isnt "current"
       activePane = atom.workspace.getActivePane()
-      pane = switch atom.config.get("tempfile.splitPane")
-        when "left"   then activePane.splitLeft()
-        when "right"  then activePane.splitRight()
-        when "top"    then activePane.splitUp()
-        when "bottom" then activePane.splitDown()
+      if atom.config.get "tempfile.useExistPane"
+        pane = @findOrCreatePane activePane
+      else
+        pane = @createNewPane activePane
       pane.focus()
     atom.workspace.open(@tempPath(grammar)).then (editor) ->
       editor.setGrammar grammar
       if selection and not selection.isEmpty()
         editor.insertText selection.getText(),
           autoIndent: atom.config.get 'tempfile.autoIndent'
+
+  createNewPane: (pane, location = null) ->
+    return switch location || atom.config.get "tempfile.splitPane"
+      when "left"   then pane.splitLeft()
+      when "right"  then pane.splitRight()
+      when "top"    then pane.splitUp()
+      when "bottom" then pane.splitDown()
+
+  findOrCreatePane: (pane, location = null) ->
+    [axisLocation, mostIndex, addIndex] = switch location || atom.config.get "tempfile.splitPane"
+      when "left"   then ["horizontal", 0, -1]
+      when "right"  then ["horizontal", pane.parent.children.length - 1, 1]
+      when "top"    then ["vertical", 0, -1]
+      when "bottom" then ["vertical", pane.parent.children.length - 1, 1]
+
+    if pane.parent.orientation is axisLocation
+      index = pane.parent.children.findIndex (p) ->
+        p.id is pane.id
+      if index is mostIndex
+        return @createNewPane(pane, location)
+      else
+        target = pane.parent.children[index + addIndex]
+        while target.constructor.name is "PaneAxis"
+          target = target.children[0]
+        return target
+    else
+      return @createNewPane(pane, location)

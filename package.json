@@ -46,6 +46,12 @@
         "bottom"
       ],
       "description": "Specify a pane location to open a new tempfile buffer"
+    },
+    "useExistPane": {
+      "order": 6,
+      "type": "boolean",
+      "default": false,
+      "description": "If already exist a pane, use it"
     }
   },
   "repository": "https://github.com/fkfk/atom-tempfile",
