@@ -22,7 +22,7 @@ module.exports = TempfileUtil =
     return undefined unless grammar and typeof extensions is "object"
     extensions[grammar.scopeName]
 
-  open: (grammar, selection = null) ->
+  open: (grammar, options) ->
     if atom.config.get("tempfile.splitPane") isnt "current"
       activePane = atom.workspace.getActivePane()
       if atom.config.get "tempfile.useExistPane"
@@ -32,8 +32,8 @@ module.exports = TempfileUtil =
       pane.focus()
     atom.workspace.open(@tempPath(grammar)).then (editor) ->
       editor.setGrammar grammar
-      if selection and not selection.isEmpty()
-        editor.insertText selection.getText(),
+      if options.selection? and not options.selection?.isEmpty()
+        editor.insertText options.selection?.getText(),
           autoIndent: atom.config.get 'tempfile.autoIndent'
 
   createNewPane: (pane, location = null) ->

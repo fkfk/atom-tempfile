@@ -33,6 +33,7 @@ module.exports = Tempfile =
 
   paste: ->
     currentEditor = atom.workspace.getActiveTextEditor()
-    selection = currentEditor.getLastSelection()
     grammar = currentEditor.getGrammar()
-    util.open grammar, selection
+    options =
+      selection: currentEditor.getLastSelection()
+    util.open grammar, options
