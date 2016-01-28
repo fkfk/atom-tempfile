@@ -3,10 +3,14 @@
 
 {SelectListView} = require 'atom-space-pen-views'
 tmp = require 'tmp'
+_ = require 'underscore-plus'
 util = require './tempfile-util'
 
 module.exports =
 class TempfileView extends SelectListView
+  openOptions: {}
+  temporaryOpenOptions: {}
+
   initialize: ->
     super
 
@@ -30,9 +34,11 @@ class TempfileView extends SelectListView
     @panel?.destroy()
     @panel = null
     @editor = null
+    @temporaryOpenOptions = {}
 
   confirmed: (grammar) ->
-    util.open grammar
+    options = _.deepExtend {}, @openOptions, @temporaryOpenOptions
+    util.open grammar, options
     @cancel()
 
   attach: ->
