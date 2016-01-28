@@ -20,6 +20,7 @@
     "directory": {
       "order": 2,
       "type": "string",
+      "default": "",
       "description": "Tempfile save directory(if save option enabled)"
     },
     "addExtension": {
