@@ -2,6 +2,7 @@ TempfileView = require './tempfile-view'
 util = require './tempfile-util'
 {CompositeDisposable} = require 'atom'
 
+path = require 'path'
 tmp = require 'tmp'
 
 module.exports = Tempfile =
