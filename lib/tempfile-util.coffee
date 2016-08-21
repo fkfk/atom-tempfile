@@ -18,7 +18,7 @@ module.exports = TempfileUtil =
     fs.normalize tempPath
 
   getExtension: (grammar) ->
-    extensions = _.deepExtend {}, @extensions, atom.config.get "tempfile-extra"
+    extensions = _.deepExtend {}, @extensions, atom.config.get("tempfile-extra") || {}
     return undefined unless grammar and typeof extensions is "object"
     extensions[grammar.scopeName]
 
